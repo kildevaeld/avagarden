@@ -7,7 +7,10 @@ edition = "2021"
 
 [features]
 default = ["alloc"]
-std = []
+std = ["once_cell", "parking_lot"]
 alloc = []
 
 [dependencies]
+once_cell = { version = "1", optional = true }
+spin = { version = "0.9", features = ["rwlock", "mutex", "lazy"] }
+parking_lot = { version = "0.12", optional = true }

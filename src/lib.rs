@@ -7,3 +7,4 @@ extern crate alloc;
 extern crate std;
 
 pub mod error;
+pub mod sync;
