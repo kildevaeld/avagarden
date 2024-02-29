@@ -12,6 +12,17 @@ mod nostd {
         fn source(&self) -> Option<&(dyn Error + 'static)> {
             None
         }
+
+        #[deprecated(note = "use the Display impl or to_string()")]
+        fn description(&self) -> &str {
+            "description() is deprecated; use Display"
+        }
+
+        #[deprecated(note = "replaced by Error::source, which can support downcasting")]
+        #[allow(missing_docs)]
+        fn cause(&self) -> Option<&dyn Error> {
+            self.source()
+        }
     }
 
     #[cfg(feature = "alloc")]
