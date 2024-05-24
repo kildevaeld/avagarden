@@ -25,13 +25,15 @@ mod nostd {
         }
     }
 
+    impl Error for fmt::Error {}
+
+    impl Error for Infallible {}
+
     #[cfg(feature = "alloc")]
     pub type BoxError<'a> = Box<dyn Error + Send + Sync + 'a>;
 
     #[cfg(feature = "alloc")]
     pub type LocalBoxError<'a> = Box<dyn Error + 'a>;
-
-    impl Error for Infallible {}
 
     #[cfg(feature = "alloc")]
     impl<'a, T> From<T> for Box<dyn Error + 'a>
